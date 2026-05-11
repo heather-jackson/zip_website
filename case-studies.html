@@ -668,8 +668,70 @@
       .bg-motivation-card img { max-height: 280px; object-fit: contain; }
     }
 
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 99;
+      background: rgba(255, 254, 250, 0.98);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1.4rem;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover,
+    .mobile-menu a.active { color: var(--orange); }
+
+    .mobile-menu-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 6%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      line-height: 1;
+    }
+
     @media (max-width: 600px) {
       .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-logo img { height: 48px; }
       .page-hero { padding: 6rem 5% 2.5rem; }
       .cs-section { padding: 2.5rem 5%; }
       .project-header { padding: 1.25rem; gap: 1rem; }
@@ -694,7 +756,19 @@
       <li><a href="case-studies.html" class="active">Case Studies</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">✕</button>
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="case-studies.html" class="active">Case Studies</a>
+    <a href="contact.html">Contact</a>
+  </div>
 
   <!-- Page Hero -->
   <header class="page-hero">
@@ -957,6 +1031,13 @@
   </div>
 
   <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileClose = document.getElementById('mobile-menu-close');
+    hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+    mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
     document.querySelectorAll('[data-carousel]').forEach(carousel => {
       const track = carousel.querySelector('.phase-carousel-track');
       const dots = carousel.querySelectorAll('.carousel-dot');
