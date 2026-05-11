@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zip Analytics | Bioinformatics Consultancy</title>
+  <link rel="icon" type="image/png" href="ZA.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -234,64 +235,6 @@
       color: var(--text-mid);
       max-width: 580px;
       line-height: 1.75;
-    }
-
-    /* ── Skills (inside About) ───────────────────────────── */
-    .skills-divider {
-      height: 1px;
-      background: var(--card-border);
-      margin: 2rem 0 1.75rem;
-    }
-
-    .skills-sub-header { margin-bottom: 1.25rem; }
-
-    .skills-sub-title {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      color: var(--text);
-      line-height: 1.15;
-      margin-top: 0.5rem;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-    }
-
-    .skill-group {
-      background: var(--white);
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 1.1rem 1.25rem;
-    }
-
-    .skill-group h3 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 0.85rem;
-      color: var(--text);
-      margin-bottom: 0.65rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--card-border);
-    }
-
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-    }
-
-    .tag {
-      font-family: 'Open Sans', sans-serif;
-      font-size: 0.75rem;
-      color: var(--text-mid);
-      background: rgba(241, 114, 35, 0.06);
-      border: 1px solid rgba(241, 114, 35, 0.18);
-      border-radius: 4px;
-      padding: 0.18rem 0.55rem;
-      line-height: 1.4;
     }
 
     /* ── Services ────────────────────────────────────────── */
@@ -610,13 +553,8 @@
     @media (max-width: 960px) {
       .hero { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: repeat(2, 1fr); }
-      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+.about-inner { grid-template-columns: 1fr; gap: 3rem; }
       .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
-    }
-
-    @media (max-width: 600px) {
-      .skills-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 600px) {
@@ -718,98 +656,6 @@
 
     </div>
 
-    <div class="skills-divider"></div>
-
-    <div class="skills-sub-header">
-      <p class="section-label">Expertise</p>
-      <h3 class="skills-sub-title">Skills &amp; Experience</h3>
-    </div>
-
-    <div class="skills-grid">
-
-      <div class="skill-group">
-        <h3>Omics</h3>
-        <div class="tag-row">
-          <span class="tag">Transcriptomics (RNA-seq)</span>
-          <span class="tag">Microarray</span>
-          <span class="tag">Proteomics</span>
-          <span class="tag">Metabolomics</span>
-          <span class="tag">Epigenetics</span>
-          <span class="tag">Mass cytometry</span>
-          <span class="tag">Exome sequencing</span>
-          <span class="tag">Pre-processing &amp; QC</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <h3>Bioinformatics</h3>
-        <div class="tag-row">
-          <span class="tag">Multi-omics integration</span>
-          <span class="tag">Differential expression analysis</span>
-          <span class="tag">Pathway analysis</span>
-          <span class="tag">Biomarker discovery</span>
-          <span class="tag">Drug target identification</span>
-          <span class="tag">UK Biobank</span>
-          <span class="tag">Gene Expression Omnibus (GEO)</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <h3>Statistics &amp; Machine Learning</h3>
-        <div class="tag-row">
-          <span class="tag">XGBoost</span>
-          <span class="tag">SVMs</span>
-          <span class="tag">Clustering</span>
-          <span class="tag">PCA</span>
-          <span class="tag">Tucker Decomposition</span>
-          <span class="tag">Dimensionality reduction</span>
-          <span class="tag">Dynamic time warping</span>
-          <span class="tag">Time-course analysis</span>
-          <span class="tag">Network analysis</span>
-          <span class="tag">Survival analysis</span>
-          <span class="tag">Patient stratification</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <h3>Programming &amp; Infrastructure</h3>
-        <div class="tag-row">
-          <span class="tag">R</span>
-          <span class="tag">Python</span>
-          <span class="tag">Bash</span>
-          <span class="tag">SQL</span>
-          <span class="tag">AWS</span>
-          <span class="tag">HPC</span>
-          <span class="tag">GitHub</span>
-          <span class="tag">Jupyter Notebooks</span>
-          <span class="tag">Docker</span>
-          <span class="tag">Conda</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <h3>Clinical Data Expertise</h3>
-        <div class="tag-row">
-          <span class="tag">Longitudinal clinical data (EHR)</span>
-          <span class="tag">Real-world data analysis</span>
-          <span class="tag">Cardiovascular-renal-metabolic disease</span>
-          <span class="tag">Infectious disease</span>
-          <span class="tag">Paediatric cohorts</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <h3>Communication</h3>
-        <div class="tag-row">
-          <span class="tag">Data visualisation</span>
-          <span class="tag">Scientific writing</span>
-          <span class="tag">Journal articles</span>
-          <span class="tag">Patent applications</span>
-          <span class="tag">Investor material</span>
-        </div>
-      </div>
-
-    </div>
   </section>
 
   <!-- Case Studies teaser -->
