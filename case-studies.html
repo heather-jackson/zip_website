@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Studies | Zip Analytics</title>
+  <link rel="icon" type="image/png" href="ZA.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #fffefa;
+      --orange:      #f17223;
+      --orange-dark: #d9621d;
+      --text:        #1c1c2e;
+      --text-mid:    #4a4a6a;
+      --text-muted:  #888;
+      --white:       #ffffff;
+      --card-border: rgba(241, 114, 35, 0.13);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── Navigation ──────────────────────────────────────── */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      padding: 0.75rem 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 254, 250, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .nav-logo {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 80px;
+      width: auto;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .nav-links a {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: 0.88rem;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--orange); }
+    .nav-links a.active { color: var(--orange); }
+
+    /* ── Page Hero ───────────────────────────────────────── */
+    .page-hero {
+      padding: 9rem 6% 3.5rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .page-eyebrow {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.9rem;
+    }
+
+    .page-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .page-intro {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-nav {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .section-nav-btn {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.6rem 1.25rem;
+      border-radius: 8px;
+      background: var(--orange);
+      color: var(--white);
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .section-nav-btn:hover {
+      background: var(--orange-dark);
+      transform: translateY(-2px);
+    }
+
+    .bg-motivation-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bg-motivation-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .bg-motivation-card img {
+      width: 100%;
+      flex: 1;
+      min-height: 280px;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 6px;
+      display: block;
+    }
+
+    /* ── Section wrapper ─────────────────────────────────── */
+    .cs-section {
+      padding: 4rem 6%;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .cs-section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.9rem;
+    }
+
+    /* ── Project header card ─────────────────────────────── */
+    .project-header {
+      background: var(--white);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 2.25rem 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      grid-template-rows: auto auto;
+      gap: 1.25rem 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .project-title-full {
+      grid-column: 1 / -1;
+    }
+
+    .project-header-left { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .btn-primary { align-self: flex-start; }
+
+    .paper-row {
+      display: flex;
+      align-items: stretch;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .paper-row .btn-primary { align-self: auto; }
+
+    .project-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+
+    .journal-badge {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: var(--orange);
+      background: rgba(241, 114, 35, 0.08);
+      border: 1px solid rgba(241, 114, 35, 0.2);
+      border-radius: 999px;
+      padding: 0.65rem 0.9rem;
+    }
+
+    .project-aim {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      max-width: 760px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.65rem 1.4rem;
+      border-radius: 8px;
+      background: var(--orange);
+      color: var(--white);
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: var(--orange-dark);
+      transform: translateY(-2px);
+    }
+
+    /* ── Phase cards grid ────────────────────────────────── */
+    .phases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .phase-card {
+      background: var(--white);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1.75rem;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+
+    .phase-card:hover {
+      box-shadow: 0 10px 36px rgba(241, 114, 35, 0.09);
+      transform: translateY(-4px);
+    }
+
+    .phase-number {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.4rem;
+    }
+
+    .phase-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .phase-body {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.68;
+      margin-bottom: 1rem;
+    }
+
+    .phase-result {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--text);
+      background: rgba(241, 114, 35, 0.07);
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+    }
+
+    .phase-result span {
+      color: var(--orange);
+    }
+
+    .phase-carousel {
+      position: relative;
+      margin-top: 1rem;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .phase-carousel-track {
+      display: flex;
+      transition: transform 0.35s ease;
+    }
+
+    .carousel-slide {
+      width: 100%;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+      object-fit: contain;
+    }
+
+    .carousel-caption {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    .carousel-slide img { cursor: zoom-in; }
+
+    /* ── Lightbox ────────────────────────────────────────── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(28, 28, 46, 0.85);
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .lightbox-inner img {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+    }
+
+    .lightbox-caption {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.75);
+      font-style: italic;
+      text-align: center;
+      max-width: 640px;
+      line-height: 1.55;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -2.5rem;
+      right: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem;
+    }
+
+    .lightbox-close svg {
+      width: 24px;
+      height: 24px;
+      stroke: rgba(255,255,255,0.8);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      transition: stroke 0.2s;
+    }
+
+    .lightbox-close:hover svg { stroke: #fff; }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,254,250,0.9);
+      border: 1px solid var(--card-border);
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+      padding: 0;
+    }
+
+    .carousel-btn:hover { background: var(--white); }
+
+    .carousel-btn svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--text);
+      fill: none;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .carousel-btn.prev { left: 6px; }
+    .carousel-btn.next { right: 6px; }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      margin-top: 0.5rem;
+    }
+
+    .carousel-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--card-border);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .carousel-dot.active { background: var(--orange); }
+
+    /* ── Metrics bar ─────────────────────────────────────── */
+    .metrics-bar {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      background: var(--white);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .metric {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      flex: 1;
+      min-width: 90px;
+    }
+
+    .metric-value {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .metric-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.35;
+    }
+
+    .metric-divider {
+      width: 1px;
+      background: var(--card-border);
+      align-self: stretch;
+      flex-shrink: 0;
+    }
+
+    /* ── Outcomes ────────────────────────────────────────── */
+    .outcomes-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .outcomes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .outcome-card {
+      background: var(--white);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+
+    .outcome-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(241, 114, 35, 0.09);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .outcome-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--orange);
+      fill: none;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .outcome-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .outcome-body {
+      font-size: 0.87rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    .outcome-body a {
+      color: var(--orange);
+      text-decoration: none;
+    }
+
+    .outcome-body a:hover { text-decoration: underline; }
+
+    /* ── Coming soon (multi-omics) ───────────────────────── */
+    .coming-soon-card {
+      background: var(--white);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      max-width: 600px;
+    }
+
+    .coming-soon-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.4rem;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+    }
+
+    .coming-soon-body {
+      font-size: 0.97rem;
+      color: var(--text-mid);
+      margin-bottom: 1.75rem;
+      line-height: 1.7;
+    }
+
+    .chip-row {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: 0.83rem;
+      padding: 0.38rem 1.15rem;
+      border-radius: 999px;
+      border: 1.5px solid var(--orange);
+      color: var(--orange);
+    }
+
+    /* ── Footer ──────────────────────────────────────────── */
+    footer {
+      padding: 2.25rem 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .footer-logo {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .footer-logo img {
+      height: 100px;
+      width: auto;
+    }
+
+    .footer-copy {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+    }
+
+    /* ── Responsive ──────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .project-header {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+      .project-title-full { grid-column: 1; }
+      .phases-grid { grid-template-columns: 1fr; }
+      .outcomes-grid { grid-template-columns: 1fr; }
+      .metrics-bar { justify-content: center; }
+      .metric-divider { display: none; }
+      .bg-motivation-card img { max-height: 280px; object-fit: contain; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .page-hero { padding: 6rem 5% 2.5rem; }
+      .cs-section { padding: 2.5rem 5%; }
+      .project-header { padding: 1.25rem; gap: 1rem; }
+      .metrics-bar { padding: 1rem; gap: 0.75rem; }
+      .metric { min-width: 70px; }
+      .metric-value { font-size: 1.5rem; }
+      .phase-card { padding: 1.25rem; }
+      .coming-soon-card { padding: 2rem 1.25rem; }
+      .carousel-btn { width: 26px; height: 26px; }
+      .lightbox { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="Zip Logo Transparent.png" alt="Zip Analytics" /></a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="case-studies.html" class="active">Case Studies</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Hero -->
+  <header class="page-hero">
+    <p class="page-eyebrow">Zip Analytics</p>
+    <h1 class="page-title">Case Studies</h1>
+    <p class="page-intro">Worked examples of end-to-end bioinformatics analysis — from raw data through to published, commercialisable findings.</p>
+    <div class="section-nav">
+      <a href="#biomarker-discovery" class="section-nav-btn">Biomarker Discovery &amp; Validation</a>
+      <a href="#multi-omics" class="section-nav-btn">Multi-omic Integration</a>
+    </div>
+  </header>
+
+  <!-- ── Biomarker Discovery & Validation ─────────────────── -->
+  <section class="cs-section" id="biomarker-discovery">
+
+    <p class="section-label">Biomarker Discovery &amp; Validation</p>
+
+    <!-- Project header -->
+    <div class="project-header">
+      <h2 class="project-title project-title-full">Identifying Protein Biomarkers for Diagnosing Paediatric Infectious Disease</h2>
+      <div class="project-header-left">
+        <p class="outcomes-label">Aim</p>
+        <p class="project-aim">
+          To identify host protein biomarkers for development into an accurate, rapid point-of-care test that can distinguish between bacterial and viral infections in febrile children.
+        </p>
+        <div class="paper-row">
+          <a href="https://www.thelancet.com/journals/landig/article/PIIS2589-7500(23)00149-8/fulltext" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            Read the paper
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+          <div class="journal-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            </svg>
+            Lancet Digital Health &nbsp;·&nbsp; Impact Factor 24.1
+          </div>
+        </div>
+      </div>
+      <div class="bg-motivation-card">
+        <p class="bg-motivation-label">Background &amp; Motivation</p>
+        <img src="biomarker_case_study_figures/Background.png" alt="Background and motivation for paediatric infectious disease biomarker study" />
+      </div>
+    </div>
+
+    <!-- Phase cards -->
+    <div class="phases-grid">
+
+      <div class="phase-card">
+        <p class="phase-number">Phase 1</p>
+        <h3 class="phase-title">Biomarker Discovery</h3>
+        <p class="phase-body">
+          Three high-dimensional proteomic datasets (SomaScan, MS-A, MS-B), each containing confirmed bacterial and viral infection cases, were pre-processed and quality-controlled. 
+        </p>
+        <p class="phase-body">
+          Differential abundance analysis was applied to identify proteins with differing levels between infection types. A machine learning algorithm — forward selection with partial least squares (FS-PLS) combined with repeated cross-validation — was applied to generate hundreds of potential biomarker models. We developed a bespoke ranking method, incorporating both differential abundance analysis and feature selection results to prioritise individual and combinations of biomarkers. 
+        </p>
+        <p class="phase-result"><span>35</span> protein candidates shortlisted across all 3 datasets</p>
+        <div class="phase-carousel" data-carousel>
+          <div class="phase-carousel-track">
+            <div class="carousel-slide">
+              <img src="biomarker_case_study_figures/Phase1.png" alt="Phase 1 biomarker discovery overview" />
+              <p class="carousel-caption">An overview of the datasets and methodologies used in Phase 1 (Signature Discovery). FS-PLS: forward selection-partial least squares.</p>
+            </div>
+            <div class="carousel-slide">
+              <img src="biomarker_case_study_figures/Phase1_results.png" alt="Phase 1 results" />
+              <p class="carousel-caption">Volcano plots showing differential abundance analysis results for each of the datasets used in Phase 1. Each point represents a protein.</p>
+            </div>
+          </div>
+          <button class="carousel-btn prev" aria-label="Previous">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="carousel-btn next" aria-label="Next">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <div class="carousel-dots">
+            <button class="carousel-dot active" aria-label="Slide 1"></button>
+            <button class="carousel-dot" aria-label="Slide 2"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-card">
+        <p class="phase-number">Phase 2</p>
+        <h3 class="phase-title">Signature Refinement</h3>
+        <p class="phase-body">
+          28 of the 35 candidates were measured using ELISA and Luminex immunoassays — low-throughput methods closer to point-of-care methodologies. FS-PLS with repeated cross-validation was reapplied to this refined pool.
+        </p>
+        <p class="phase-body">
+          A 5-protein signature was identified — NCAM1, IL-18, SELE, NGAL, and IFN-γ — selected in 7 of 25 iterations with an AUC of 89.1% and with high sensitivity for bacterial infections (90.4%) but lower specificity (67%), mislabelling about one-third of viral cases as bacterial. At this point, we identified Galectin-3BP as an additional marker to improve discrimination between bacterial and viral infections in borderline cases where bacterial infections appeared more viral clinically.
+        </p>
+        <p class="phase-result"><span>6-protein</span> signature identified</p>
+        <div class="phase-carousel" data-carousel>
+          <div class="phase-carousel-track">
+            <div class="carousel-slide">
+              <img src="biomarker_case_study_figures/Phase2.png" alt="Phase 2 signature refinement overview" />
+              <p class="carousel-caption">An overview of the datasets and methodologies used in Phase 2 (Signature Refinement). FS-PLS: forward selection-partial least squares.</p>
+            </div>
+            <div class="carousel-slide">
+              <img src="biomarker_case_study_figures/Phase2_results.png" alt="Phase 2 ROC curve" style="width:65%;margin:0 auto;" />
+              <p class="carousel-caption">A ROC curve showing the performance of the optimal signature identified in Phase 2. ROC: receiver operating characteristic, AUC: area under the ROC curve, CI: confidence interval.</p>
+            </div>
+          </div>
+          <button class="carousel-btn prev" aria-label="Previous">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="carousel-btn next" aria-label="Next">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <div class="carousel-dots">
+            <button class="carousel-dot active" aria-label="Slide 1"></button>
+            <button class="carousel-dot" aria-label="Slide 2"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-card">
+        <p class="phase-number">Phase 3</p>
+        <h3 class="phase-title">Final Validation</h3>
+        <p class="phase-body">
+          A further validation study was performed using Luminex, this time measuring the 6 optimal proteins identified in phase 2 (NCAM1, IL18, SELE, NGAL, IFN-γ, Galectin-3BP). The 6-protein signature performed well overall (AUC >89%) and could accurately identify both bacterial (sensitivity: 88.1%) and viral (specificity: 84.9%) infections.
+        </p>
+        <p class="phase-body">
+          Signature discovery used confirmed cases, but most real-world cases are unconfirmed. The signature aligned with clinical assessment even in unconfirmed cases, demonstrating potential to support confident treatment decisions across the full spectrum of childhood fevers.
+        </p>
+        <p class="phase-result">AUC <span>&gt;89%</span> · Sensitivity <span>88.1%</span> · Specificity <span>84.9%</span></p>
+        <div class="phase-carousel" data-carousel>
+          <div class="phase-carousel-track">
+            <div class="carousel-slide">
+              <img src="biomarker_case_study_figures/Phase3.png" alt="Phase 3 final validation overview" />
+              <p class="carousel-caption">An overview of the datasets and methodologies used in Phase 3 (Final Validation).</p>
+            </div>
+            <div class="carousel-slide">
+              <img src="biomarker_case_study_figures/Phase3_results1.png" alt="Phase 3 ROC curve" style="width:65%;margin:0 auto;" />
+              <p class="carousel-caption">A ROC curve showing the performance of the final signature identified shown in Phase 3. ROC: receiver operating characteristic, AUC: area under the ROC curve, CI: confidence interval.</p>
+            </div>
+            <div class="carousel-slide">
+              <img src="biomarker_case_study_figures/Phase3_results2.png" alt="Phase 3 bacterial classification scores" />
+              <p class="carousel-caption">Bacterial classification scores for patients in all categories, including unconfirmed groups. Each point represents a patient with the x-axis spanning from confirmed bacterial to confirmed viral.</p>
+            </div>
+          </div>
+          <button class="carousel-btn prev" aria-label="Previous">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="carousel-btn next" aria-label="Next">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <div class="carousel-dots">
+            <button class="carousel-dot active" aria-label="Slide 1"></button>
+            <button class="carousel-dot" aria-label="Slide 2"></button>
+            <button class="carousel-dot" aria-label="Slide 3"></button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Metrics bar -->
+    <div class="metrics-bar">
+      <div class="metric">
+        <span class="metric-value">6</span>
+        <span class="metric-label">proteins in<br>final signature</span>
+      </div>
+      <div class="metric-divider"></div>
+      <div class="metric">
+        <span class="metric-value">&gt;89%</span>
+        <span class="metric-label">AUC</span>
+      </div>
+      <div class="metric-divider"></div>
+      <div class="metric">
+        <span class="metric-value">88.1%</span>
+        <span class="metric-label">sensitivity</span>
+      </div>
+      <div class="metric-divider"></div>
+      <div class="metric">
+        <span class="metric-value">84.9%</span>
+        <span class="metric-label">specificity</span>
+      </div>
+      <div class="metric-divider"></div>
+      <div class="metric">
+        <span class="metric-value">5</span>
+        <span class="metric-label">datasets<br>interrogated</span>
+      </div>
+    </div>
+
+    <!-- Outcomes -->
+    <p class="outcomes-label">Outcomes</p>
+    <div class="outcomes-grid">
+
+      <div class="outcome-card">
+        <div class="outcome-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+        </div>
+        <p class="outcome-title">Publication</p>
+        <p class="outcome-body">Published in <a href="https://www.thelancet.com/journals/landig/article/PIIS2589-7500(23)00149-8/fulltext" target="_blank" rel="noopener noreferrer"><em>Lancet Digital Health</em></a> (Impact Factor 24.1) — a leading peer-reviewed journal in digital medicine.</p>
+      </div>
+
+      <div class="outcome-card">
+        <div class="outcome-icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="9" y="2" width="6" height="6" rx="1"/><path d="M9 2H5a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-4"/><line x1="12" y1="12" x2="12" y2="18"/><line x1="9" y1="15" x2="15" y2="15"/>
+          </svg>
+        </div>
+        <p class="outcome-title">Patent Filed</p>
+        <p class="outcome-body">
+          A host protein signature for distinguishing between bacterial and viral infections in febrile children. <a href="https://register.epo.org/application?number=EP24768156&tab=main" target="_blank" rel="noopener noreferrer">PCT/GB2024/052214</a>, filed August 2024. Jackson HR, Kaforou M, Levin M, Kuijpers T, de Jonge M.
+        </p>
+      </div>
+
+      <div class="outcome-card">
+        <div class="outcome-icon">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <p class="outcome-title">Ongoing Translation</p>
+        <p class="outcome-body">Active work underway at Imperial College London to translate the 6-protein signature into a rapid point-of-care diagnostic test.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ── Multi-omic Integration ────────────────────────────── -->
+  <section class="cs-section" id="multi-omics">
+
+    <p class="section-label">Multi-omic Integration</p>
+
+    <div class="coming-soon-card">
+      <h2 class="coming-soon-title">Case study in preparation</h2>
+      <p class="coming-soon-body">A worked example of multi-omic data integration is coming soon.</p>
+      <div class="chip-row">
+        <span class="chip">Transcriptomics</span>
+        <span class="chip">Proteomics</span>
+        <span class="chip">Metabolomics</span>
+        <span class="chip">Data Integration</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <a href="index.html" class="footer-logo"><img src="Zip Logo no Catch Line Transparent.png" alt="Zip Analytics" /></a>
+    <p class="footer-copy">© 2026 Zip Analytics. All rights reserved.</p>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Close">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <img id="lightbox-img" src="" alt="" />
+      <p class="lightbox-caption" id="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('[data-carousel]').forEach(carousel => {
+      const track = carousel.querySelector('.phase-carousel-track');
+      const dots = carousel.querySelectorAll('.carousel-dot');
+      const total = dots.length;
+      let current = 0;
+
+      function goTo(index) {
+        current = index;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+      }
+
+      carousel.querySelector('.prev').addEventListener('click', () => goTo((current - 1 + total) % total));
+      carousel.querySelector('.next').addEventListener('click', () => goTo((current + 1) % total));
+      dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+
+    document.querySelectorAll('.carousel-slide img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        const caption = img.closest('.carousel-slide').querySelector('.carousel-caption');
+        lightboxCaption.textContent = caption ? caption.textContent : '';
+        lightbox.classList.add('open');
+      });
+    });
+
+    document.getElementById('lightbox-close').addEventListener('click', () => lightbox.classList.remove('open'));
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('open'); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
+  </script>
+</body>
+</html>
