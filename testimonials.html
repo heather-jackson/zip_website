@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | Zip Analytics</title>
+  <title>Testimonials | Zip Analytics</title>
   <link rel="icon" type="image/png" href="ZA.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -103,99 +103,73 @@
       max-width: 560px;
     }
 
-    /* ── Contact section ─────────────────────────────────── */
-    .contact-section {
-      padding: 10rem 6%;
-    }
-
-    .contact-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: start;
-    }
-
-    .section-label {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 0.78rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 0.9rem;
-    }
-
-    .section-title {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      font-size: clamp(1.8rem, 4vw, 2.75rem);
-      color: var(--text);
-      line-height: 1.12;
-      margin-bottom: 1.1rem;
-    }
-
-    .section-body {
-      font-size: 1.03rem;
-      color: var(--text-mid);
-      max-width: 580px;
-      line-height: 1.75;
-    }
-
-    .contact-links {
+    /* ── Testimonials Section ────────────────────────────── */
+    .testimonials-section {
+      padding: 6rem 6%;
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
+      align-items: center;
+      gap: 3rem;
     }
 
-    .contact-card {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      padding: 1.5rem;
+    .testimonial-card {
       background: var(--white);
       border: 1px solid var(--card-border);
-      border-radius: 10px;
-      text-decoration: none;
-      transition: box-shadow 0.2s, transform 0.2s;
+      border-left: 4px solid var(--orange);
+      border-radius: 1rem;
+      padding: 3rem 3.5rem;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 4px 24px rgba(241, 114, 35, 0.06);
+      transition: box-shadow 0.25s, transform 0.25s;
     }
 
-    .contact-card:hover {
-      box-shadow: 0 8px 28px rgba(241,114,35,0.1);
-      transform: translateY(-2px);
+    .testimonial-card:hover {
+      box-shadow: 0 10px 36px rgba(241, 114, 35, 0.12);
+      transform: translateY(-3px);
     }
 
-    .contact-icon {
-      width: 46px;
-      height: 46px;
-      background: rgba(241,114,35,0.09);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+    .quote-mark {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 5rem;
+      color: var(--orange);
+      line-height: 0.6;
+      margin-bottom: 1.5rem;
+      display: block;
     }
 
-    .contact-icon svg {
-      width: 22px;
-      height: 22px;
-      stroke: var(--orange);
+    .quote-text {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.85;
+      font-style: italic;
     }
 
-    .contact-card-label {
+    .quote-text p + p {
+      margin-top: 1.1rem;
+    }
+
+    .quote-attribution {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .quote-name {
       font-family: 'Poppins', sans-serif;
       font-weight: 600;
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.2rem;
+      font-size: 1rem;
+      color: var(--text);
     }
 
-    .contact-card-value {
+    .quote-role {
       font-family: 'Open Sans', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--orange);
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
     }
 
     /* ── Footer ──────────────────────────────────────────── */
@@ -219,11 +193,7 @@
 
     .footer-copy { font-size: 0.83rem; color: var(--text-muted); }
 
-    /* ── Responsive ──────────────────────────────────────── */
-    @media (max-width: 960px) {
-      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
-    }
-
+    /* ── Hamburger / Mobile Menu ─────────────────────────── */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -266,6 +236,7 @@
     }
 
     .mobile-menu a:hover { color: var(--orange); }
+    .mobile-menu a.active { color: var(--orange); }
 
     .mobile-menu-close {
       position: absolute;
@@ -278,12 +249,16 @@
       color: var(--text-muted);
     }
 
+    /* ── Responsive ──────────────────────────────────────── */
     @media (max-width: 600px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .nav-logo img { height: 48px; }
       .page-hero { padding: 6rem 5% 2.5rem; }
-      .contact-section { padding: 3rem 5%; }
+      .testimonials-section { padding: 3.5rem 5%; }
+      .testimonial-card { padding: 2rem 1.75rem; }
+      .quote-mark { font-size: 3.5rem; }
+      .quote-text { font-size: 1rem; }
     }
   </style>
 </head>
@@ -296,8 +271,8 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="index.html#about">About</a></li>
       <li><a href="case-studies.html">Case Studies</a></li>
-      <li><a href="testimonials.html">Testimonials</a></li>
-      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="testimonials.html" class="active">Testimonials</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -310,48 +285,33 @@
     <a href="index.html">Home</a>
     <a href="index.html#about">About</a>
     <a href="case-studies.html">Case Studies</a>
-    <a href="testimonials.html">Testimonials</a>
-    <a href="contact.html" class="active">Contact</a>
+    <a href="testimonials.html" class="active">Testimonials</a>
+    <a href="contact.html">Contact</a>
   </div>
 
+  <!-- Page Hero -->
+  <header class="page-hero">
+    <p class="page-eyebrow">What Clients Say</p>
+    <h1 class="page-title">Testimonials</h1>
+    <p class="page-intro">Honest words from the researchers and leaders we've had the privilege of working alongside.</p>
+  </header>
 
+  <!-- Testimonials -->
+  <section class="testimonials-section">
 
-  <!-- Contact -->
-  <section class="contact-section">
-    <div class="contact-inner">
-      <div class="contact-text">
-        <p class="section-label">Let's work together</p>
-        <h2 class="section-title">Get in Touch</h2>
-        <p class="section-body">Interested in working with us? Reach out via email or connect with us on LinkedIn.</p>
+    <div class="testimonial-card">
+      <span class="quote-mark">&ldquo;</span>
+      <div class="quote-text">
+        <p>Working with Heather was a genuine joy. From day one, she grasped the full vision of the project and executed on it independently and brilliantly, no hand-holding required. She brings a rare combination of strengths: rigorous computational work, scientific integrity, thorough documentation, and a real talent for making complex information accessible through clear visualizations and well-crafted manuscripts.</p>
+        <p>What really stood out was her ownership. Heather single-handedly managed our entire patent application from start to finish, a process that can be daunting, and made it remarkably smooth and stress-free.</p>
+        <p>If you're looking for someone who can both do the deep technical work and communicate it effectively, Heather is exceptional.</p>
       </div>
-      <div class="contact-links">
-        <a href="mailto:hello@zipanalytics.co.uk" class="contact-card">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="4" width="20" height="16" rx="2"/>
-              <polyline points="2,4 12,13 22,4"/>
-            </svg>
-          </div>
-          <div>
-            <p class="contact-card-label">Email</p>
-            <p class="contact-card-value">hello@zipanalytics.co.uk</p>
-          </div>
-        </a>
-        <a href="https://www.linkedin.com/company/zipanalytics/" target="_blank" rel="noopener noreferrer" class="contact-card">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-              <rect x="2" y="9" width="4" height="12"/>
-              <circle cx="4" cy="4" r="2"/>
-            </svg>
-          </div>
-          <div>
-            <p class="contact-card-label">LinkedIn</p>
-            <p class="contact-card-value">Zip Analytics</p>
-          </div>
-        </a>
+      <div class="quote-attribution">
+        <p class="quote-name">Dr Ariella Cohain</p>
+        <p class="quote-role">CTO, Multiomic Health</p>
       </div>
     </div>
+
   </section>
 
   <!-- Footer -->
